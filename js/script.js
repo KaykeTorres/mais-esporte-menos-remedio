@@ -34,10 +34,6 @@ function initForm() {
     e.target.value = V.maskDate(e.target.value);
   });
 
-  inputCEP.addEventListener("input", (e) => {
-    e.target.value = V.maskCEP(e.target.value);
-  });
-
   /* ---------- VALIDAÇÃO EM TEMPO REAL (on blur) ---------- */
   inputName.addEventListener("blur", () =>
     V.validateField(inputName, V.isValidName, "Informe nome e sobrenome.")

@@ -93,15 +93,85 @@
           <div class="accordion-panel" id="addressPanel">
             <div class="accordion-inner">
 
+              <!-- CEP PRIMEIRO — preenchimento automático via ViaCEP -->
+              <div class="field">
+                <label for="cep"><span class="ico">📮</span> CEP</label>
+                <div class="input-wrap">
+                  <input type="text" id="cep" name="cep" placeholder="00000-000" inputmode="numeric" maxlength="9">
+                  <span class="check">✓</span>
+                  <span class="cep-loading" id="cepLoading" style="display:none;position:absolute;right:14px;top:50%;transform:translateY(-50%);font-size:11px;color:rgba(255,209,42,0.8);">buscando…</span>
+                </div>
+                <span class="field-err">CEP inválido.</span>
+              </div>
+
+              <!-- Campos preenchidos automaticamente pelo CEP -->
               <div class="field">
                 <label for="logradouro"><span class="ico">📍</span> Logradouro (Rua / Avenida)</label>
                 <div class="input-wrap">
-                  <input type="text" id="logradouro" name="logradouro" placeholder="Ex: Rua das Flores">
+                  <input type="text" id="logradouro" name="logradouro" placeholder="Preenchido automaticamente pelo CEP">
                   <span class="check">✓</span>
                 </div>
                 <span class="field-err">Campo obrigatório.</span>
               </div>
 
+              <div class="field-row">
+                <div class="field">
+                  <label for="bairro">Bairro</label>
+                  <div class="input-wrap">
+                    <input type="text" id="bairro" name="bairro" placeholder="Preenchido pelo CEP">
+                    <span class="check">✓</span>
+                  </div>
+                  <span class="field-err">Campo obrigatório.</span>
+                </div>
+
+                <div class="field">
+                  <label for="cidade">Cidade</label>
+                  <div class="input-wrap">
+                    <input type="text" id="cidade" name="cidade" placeholder="Preenchida pelo CEP">
+                    <span class="check">✓</span>
+                  </div>
+                  <span class="field-err">Campo obrigatório.</span>
+                </div>
+              </div>
+
+              <div class="field">
+                <label for="estado">Estado</label>
+                <div class="input-wrap">
+                  <select id="estado" name="estado">
+                    <option value="">Preenchido pelo CEP</option>
+                    <option value="AC">Acre</option>
+                    <option value="AL">Alagoas</option>
+                    <option value="AP">Amapá</option>
+                    <option value="AM">Amazonas</option>
+                    <option value="BA">Bahia</option>
+                    <option value="CE">Ceará</option>
+                    <option value="DF">Distrito Federal</option>
+                    <option value="ES">Espírito Santo</option>
+                    <option value="GO">Goiás</option>
+                    <option value="MA">Maranhão</option>
+                    <option value="MT">Mato Grosso</option>
+                    <option value="MS">Mato Grosso do Sul</option>
+                    <option value="MG">Minas Gerais</option>
+                    <option value="PA">Pará</option>
+                    <option value="PB">Paraíba</option>
+                    <option value="PR">Paraná</option>
+                    <option value="PE">Pernambuco</option>
+                    <option value="PI">Piauí</option>
+                    <option value="RJ">Rio de Janeiro</option>
+                    <option value="RN">Rio Grande do Norte</option>
+                    <option value="RS">Rio Grande do Sul</option>
+                    <option value="RO">Rondônia</option>
+                    <option value="RR">Roraima</option>
+                    <option value="SC">Santa Catarina</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="SE">Sergipe</option>
+                    <option value="TO">Tocantins</option>
+                  </select>
+                </div>
+                <span class="field-err">Campo obrigatório.</span>
+              </div>
+
+              <!-- Número e Complemento: o usuário preenche manualmente -->
               <div class="field-row">
                 <div class="field">
                   <label for="numero">Número</label>
@@ -120,73 +190,6 @@
                 </div>
               </div>
 
-              <div class="field-row">
-                <div class="field">
-                  <label for="cep">CEP</label>
-                  <div class="input-wrap">
-                    <input type="text" id="cep" name="cep" placeholder="00000-000" inputmode="numeric" maxlength="9">
-                    <span class="check">✓</span>
-                  </div>
-                  <span class="field-err">CEP inválido.</span>
-                </div>
-
-                <div class="field">
-                  <label for="bairro">Bairro</label>
-                  <div class="input-wrap">
-                    <input type="text" id="bairro" name="bairro" placeholder="Ex: Centro">
-                    <span class="check">✓</span>
-                  </div>
-                  <span class="field-err">Campo obrigatório.</span>
-                </div>
-              </div>
-
-              <div class="field-row">
-                <div class="field">
-                  <label for="cidade">Cidade</label>
-                  <div class="input-wrap">
-                    <input type="text" id="cidade" name="cidade" placeholder="Ex: São Paulo">
-                    <span class="check">✓</span>
-                  </div>
-                  <span class="field-err">Campo obrigatório.</span>
-                </div>
-
-                <div class="field">
-                  <label for="estado">Estado</label>
-                  <div class="input-wrap">
-                    <select id="estado" name="estado">
-                      <option value="">Selecione</option>
-                      <option value="AC">Acre</option>
-                      <option value="AL">Alagoas</option>
-                      <option value="AP">Amapá</option>
-                      <option value="AM">Amazonas</option>
-                      <option value="BA">Bahia</option>
-                      <option value="CE">Ceará</option>
-                      <option value="DF">Distrito Federal</option>
-                      <option value="ES">Espírito Santo</option>
-                      <option value="GO">Goiás</option>
-                      <option value="MA">Maranhão</option>
-                      <option value="MT">Mato Grosso</option>
-                      <option value="MS">Mato Grosso do Sul</option>
-                      <option value="MG">Minas Gerais</option>
-                      <option value="PA">Pará</option>
-                      <option value="PB">Paraíba</option>
-                      <option value="PR">Paraná</option>
-                      <option value="PE">Pernambuco</option>
-                      <option value="PI">Piauí</option>
-                      <option value="RJ">Rio de Janeiro</option>
-                      <option value="RN">Rio Grande do Norte</option>
-                      <option value="RS">Rio Grande do Sul</option>
-                      <option value="RO">Rondônia</option>
-                      <option value="RR">Roraima</option>
-                      <option value="SC">Santa Catarina</option>
-                      <option value="SP">São Paulo</option>
-                      <option value="SE">Sergipe</option>
-                      <option value="TO">Tocantins</option>
-                    </select>
-                  </div>
-                  <span class="field-err">Campo obrigatório.</span>
-                </div>
-              </div>
 
             </div>
           </div>

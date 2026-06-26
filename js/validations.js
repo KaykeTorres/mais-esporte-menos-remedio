@@ -89,6 +89,118 @@ function validateField(input, validatorFn, errorMessage) {
   return isValid;
 }
 
+/* ---------- BUSCA DE CEP (ViaCEP) ---------- */
+
+/**
+ * Busca o endereço pelo CEP usando a API pública do ViaCEP.
+ * Preenche automaticamente: logradouro, bairro, cidade e estado.
+ * @param {string} cepValue   valor do campo CEP (pode ter máscara)
+ */
+async function fetchAddressByCEP(cepValue) {
+  const digits = cepValue.replace(/\D/g, "");
+  if (digits.length !== 8) return;
+
+  const cepInput    = document.getElementById("cep");
+  const loading     = document.getElementById("cepLoading");
+  const logradouro  = document.getElementById("logradouro");
+  const bairro      = document.getElementById("bairro");
+  const cidade      = document.getElementById("cidade");
+  const estado      = document.getElementById("estado");
+
+  // Mostra indicador de carregamento
+  if (loading) { loading.style.display = "block"; }
+  const checkEl = cepInput ? cepInput.nextElementSibling : null;
+  if (checkEl && checkEl.classList.contains("check")) checkEl.style.opacity = "0";
+
+  try {
+    const resp = await fetch(`https://viacep.com.br/ws/${digits}/json/`);
+    if (!resp.ok) throw new Error("Erro na resposta");
+
+    const data = await resp.json();
+
+    if (data.erro) {
+      // CEP não encontrado
+      const fieldWrap = cepInput ? cepInput.closest(".field") : null;
+      if (fieldWrap) fieldWrap.classList.add("err");
+      const errEl = fieldWrap ? fieldWrap.querySelector(".field-err") : null;
+      if (errEl) errEl.textContent = "CEP não encontrado.";
+      return;
+    }
+
+    // Preenche os campos automaticamente
+    function fillField(input, value) {
+      if (!input) return;
+      input.value = value || "";
+      if (value) {
+        input.classList.add("valid");
+        const wrap = input.closest(".field");
+        if (wrap) wrap.classList.remove("err");
+      }
+    }
+
+    fillField(logradouro, data.logradouro);
+    fillField(bairro,     data.bairro);
+    fillField(cidade,     data.localidade);
+
+    // Seleciona o estado no <select>
+    if (estado && data.uf) {
+      estado.value = data.uf;
+      if (estado.value) {
+        estado.classList.add("valid");
+        const wrap = estado.closest(".field");
+        if (wrap) wrap.classList.remove("err");
+      }
+    }
+
+    // Marca CEP como válido
+    if (cepInput) {
+      cepInput.classList.add("valid");
+      const wrap = cepInput.closest(".field");
+      if (wrap) wrap.classList.remove("err");
+    }
+
+    // Foca no campo Número para o usuário completar
+    const numeroInput = document.getElementById("numero");
+    if (numeroInput) setTimeout(() => numeroInput.focus(), 100);
+
+    // Atualiza altura do accordion (se estiver aberto)
+    if (window.refreshAddressAccordionHeight) window.refreshAddressAccordionHeight();
+
+  } catch (err) {
+    console.warn("[validations.js] Não foi possível buscar o CEP:", err);
+  } finally {
+    if (loading) loading.style.display = "none";
+  }
+}
+
+/**
+ * Inicializa o listener de auto-preenchimento no campo CEP.
+ * Chamado automaticamente ao carregar o DOM.
+ */
+function initCEPAutoFill() {
+  const cepInput = document.getElementById("cep");
+  if (!cepInput) return;
+
+  cepInput.addEventListener("input", (e) => {
+    e.target.value = maskCEP(e.target.value);
+    const digits = e.target.value.replace(/\D/g, "");
+    // Dispara a busca assim que os 8 dígitos estiverem completos
+    if (digits.length === 8) {
+      fetchAddressByCEP(e.target.value);
+    }
+  });
+
+  // Também busca ao sair do campo (blur), caso o usuário cole um CEP
+  cepInput.addEventListener("blur", (e) => {
+    const digits = e.target.value.replace(/\D/g, "");
+    if (digits.length === 8) {
+      fetchAddressByCEP(e.target.value);
+    }
+  });
+}
+
+document.addEventListener("DOMContentLoaded", initCEPAutoFill);
+
 /* Exposto globalmente para uso em script.js e accordion.js */
 window.Validations = {
   maskPhoneBR,
@@ -100,4 +212,5 @@ window.Validations = {
   isValidCEP,
   isNotEmpty,
   validateField,
+  fetchAddressByCEP,
 };
