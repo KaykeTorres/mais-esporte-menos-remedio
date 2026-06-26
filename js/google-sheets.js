@@ -143,11 +143,41 @@ function isGoogleSheetsConfigured() {
   return Boolean(SHEET_WEBAPP_URL);
 }
 
+/**
+ * Busca SOMENTE os nomes completos dos participantes, em texto puro
+ * (um nome por linha). Usado pelo site de SORTEIO (outro domínio) para
+ * preencher a urna automaticamente, sem nunca expor WhatsApp, endereço
+ * ou qualquer outro dado sensível.
+ *
+ * Exemplo de uso no site de sorteio:
+ *   const nomes = await window.GoogleSheets.fetchNomesParaSorteio();
+ *   // nomes = "João Silva\nMaria Souza\nCarlos Lima"
+ *
+ * @returns {Promise<{ok: boolean, texto: string, message?: string}>}
+ */
+async function fetchNomesParaSorteio() {
+  if (!SHEET_WEBAPP_URL) {
+    return { ok: false, texto: "", message: "not_configured" };
+  }
+
+  try {
+    const response = await fetch(`${SHEET_WEBAPP_URL}?action=nomes`, { method: "GET" });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+    const texto = await response.text();
+    return { ok: true, texto: texto.trim() };
+  } catch (err) {
+    console.error("[google-sheets.js] Falha ao buscar nomes para o sorteio:", err);
+    return { ok: false, texto: "", message: "fetch_error" };
+  }
+}
+
 window.GoogleSheets = {
   sendLeadToGoogleSheets,
   getLocalBackupLeads,
   deleteLocalBackupLead,
   clearLocalBackupLeads,
   fetchLeadsFromGoogleSheets,
+  fetchNomesParaSorteio,
   isGoogleSheetsConfigured,
 };
