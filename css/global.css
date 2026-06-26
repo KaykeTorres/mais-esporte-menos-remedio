@@ -1,0 +1,110 @@
+/* ============================================================
+   GLOBAL.CSS — Reset & estilos base
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% -10%, rgba(30, 60, 200, 0.55) 0%, transparent 70%),
+    repeating-linear-gradient(
+      -45deg,
+      transparent 0px,
+      transparent 18px,
+      rgba(255, 255, 255, 0.028) 18px,
+      rgba(255, 255, 255, 0.028) 19px
+    );
+  font-family: var(--font-body);
+  font-weight: var(--fw-regular);
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; display: block; }
+
+button { font-family: inherit; }
+
+a {
+  color: var(--color-gold);
+  text-decoration: none;
+}
+
+/* ---------- HEADER / LOGO ---------- */
+.header {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-3xl) var(--space-lg) var(--space-xl);
+}
+
+.logo-img {
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+}
+
+.tagline {
+  margin-top: var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
+  letter-spacing: var(--ls-widest);
+  color: var(--color-gold);
+}
+
+.tagline::before,
+.tagline::after {
+  content: '';
+  display: block;
+  width: 36px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-gold));
+}
+.tagline::after { transform: scaleX(-1); }
+
+.dot-live {
+  width: 8px;
+  height: 8px;
+  background: var(--color-success);
+  border-radius: var(--radius-full);
+  display: inline-block;
+  animation: blink 1.8s ease-in-out infinite;
+}
+
+/* ---------- FOOTER ---------- */
+.footer {
+  padding: var(--space-lg);
+  text-align: center;
+  font-size: var(--fs-xs);
+  color: var(--color-text-faint);
+}
+
+/* ---------- UTILITÁRIOS ---------- */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}

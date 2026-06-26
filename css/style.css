@@ -1,0 +1,15 @@
+/* ============================================================
+   STYLE.CSS — Arquivo mestre
+   ------------------------------------------------------------
+   Este arquivo contém APENAS imports. Não adicione regras de
+   estilo aqui — edite o arquivo específico correspondente.
+   A ORDEM dos imports importa (cascata CSS).
+   ============================================================ */
+
+@import url('variables.css');
+@import url('global.css');
+@import url('form.css');
+@import url('admin-modal.css');
+@import url('admin-panel.css');
+@import url('animations.css');
+@import url('responsive.css');

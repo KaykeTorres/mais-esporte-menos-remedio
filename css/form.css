@@ -1,0 +1,305 @@
+/* ============================================================
+   FORM.CSS — Formulário de cadastro
+   ============================================================ */
+
+.card {
+  width: 100%;
+  max-width: var(--container-form);
+  background: var(--color-card-bg);
+  border: var(--border-thin) solid var(--color-card-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl) var(--space-2xl) var(--space-3xl);
+  margin: 0 var(--space-lg) var(--space-3xl);
+  backdrop-filter: blur(var(--color-glass-blur));
+  -webkit-backdrop-filter: blur(var(--color-glass-blur));
+  box-shadow: var(--shadow-card);
+  animation: fadeUp var(--transition-slow) ease both;
+}
+
+.card-title {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  letter-spacing: var(--ls-wide);
+  color: var(--color-text);
+  margin-bottom: var(--space-2xs);
+}
+
+.card-sub {
+  font-size: var(--fs-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-xl);
+  line-height: 1.5;
+}
+
+.section-label {
+  font-family: var(--font-display);
+  font-size: var(--fs-sm);
+  letter-spacing: var(--ls-wide);
+  color: var(--color-gold);
+  margin: var(--space-lg) 0 var(--space-sm);
+  text-transform: uppercase;
+}
+
+/* ---------- CAMPOS ---------- */
+.field-stack { display: flex; flex-direction: column; gap: var(--space-md); }
+
+.field { display: flex; flex-direction: column; gap: 7px; }
+
+label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+label .ico { font-size: 13px; }
+label .opt-tag {
+  text-transform: none;
+  font-weight: var(--fw-regular);
+  letter-spacing: 0;
+  font-size: 10px;
+  color: var(--color-text-faint);
+}
+
+.input-wrap { position: relative; }
+
+input[type="text"],
+input[type="tel"],
+select {
+  width: 100%;
+  background: var(--color-input-bg);
+  border: var(--border-base) solid var(--color-input-border);
+  border-radius: var(--radius-md);
+  padding: 13px 16px;
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  color: var(--color-text);
+  outline: none;
+  transition: border-color var(--transition-base), background var(--transition-base);
+  appearance: none;
+}
+
+select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23FFD12A'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  cursor: pointer;
+}
+select option { background: var(--color-bg-dark); color: var(--color-text); }
+
+input::placeholder { color: var(--color-text-faint); }
+
+input:focus, select:focus {
+  border-color: var(--color-input-focus-br);
+  background: var(--color-input-focus-bg);
+}
+
+.field.err input,
+.field.err select { border-color: var(--color-error) !important; }
+.field-err {
+  font-size: var(--fs-xs);
+  color: var(--color-error);
+  display: none;
+  margin-top: 2px;
+}
+.field.err .field-err { display: block; }
+
+.check {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-success);
+  font-size: var(--fs-md);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  pointer-events: none;
+}
+input.valid + .check { opacity: 1; }
+
+/* ---------- LINHA DE 2 CAMPOS (Número / CEP etc.) ---------- */
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+/* ---------- ACCORDION ENDEREÇO ---------- */
+.btn-toggle-address {
+  width: 100%;
+  background: var(--color-input-bg);
+  border: var(--border-base) dashed var(--color-input-border);
+  border-radius: var(--radius-md);
+  padding: 13px 16px;
+  margin-top: var(--space-lg);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+  color: var(--color-gold);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background var(--transition-base), border-color var(--transition-base);
+}
+.btn-toggle-address:hover {
+  background: var(--color-gold-soft);
+  border-color: var(--color-gold-dim);
+}
+.btn-toggle-address .chevron {
+  transition: transform var(--transition-base);
+}
+.btn-toggle-address[aria-expanded="true"] .chevron {
+  transform: rotate(180deg);
+}
+
+.accordion-panel {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height var(--transition-slow), opacity var(--transition-base);
+}
+.accordion-panel.open {
+  opacity: 1;
+  /* max-height definido via JS (scrollHeight) para animação suave e precisa */
+}
+.accordion-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding-top: var(--space-md);
+}
+
+/* ---------- TERMOS / LGPD ---------- */
+.terms-box {
+  margin-top: var(--space-xl);
+  display: flex;
+  gap: var(--space-sm);
+  align-items: flex-start;
+  background: var(--color-input-bg);
+  border: var(--border-thin) solid var(--color-input-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+}
+
+.terms-box input[type="checkbox"] {
+  appearance: none;
+  width: 19px;
+  height: 19px;
+  min-width: 19px;
+  border-radius: 5px;
+  border: var(--border-base) solid var(--color-input-border);
+  background: var(--color-input-bg);
+  cursor: pointer;
+  position: relative;
+  margin-top: 1px;
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+.terms-box input[type="checkbox"]:checked {
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+}
+.terms-box input[type="checkbox"]:checked::after {
+  content: '✓';
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: var(--fw-bold);
+  color: var(--color-bg);
+}
+
+.terms-box label {
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 11.5px;
+  font-weight: var(--fw-regular);
+  color: var(--color-text-muted);
+  line-height: 1.55;
+  cursor: pointer;
+}
+
+.terms-error {
+  font-size: var(--fs-xs);
+  color: var(--color-error);
+  margin-top: var(--space-xs);
+  display: none;
+}
+.terms-error.show { display: block; animation: fadeUp var(--transition-base) ease both; }
+
+/* ---------- BOTÃO PRINCIPAL ---------- */
+.btn-submit {
+  width: 100%;
+  margin-top: var(--space-xl);
+  background: var(--color-gold);
+  color: var(--color-bg);
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  letter-spacing: var(--ls-wider);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 16px 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: opacity var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-base);
+  box-shadow: var(--shadow-gold);
+}
+.btn-submit:hover:not(:disabled)  { opacity: var(--btn-opacity-hover); box-shadow: var(--shadow-gold-lg); }
+.btn-submit:active:not(:disabled) { transform: scale(var(--btn-scale-active)); }
+.btn-submit:disabled { opacity: 0.65; cursor: not-allowed; }
+
+.btn-submit .spinner {
+  display: none;
+  width: 18px; height: 18px;
+  border: 2.5px solid rgba(12, 26, 120, 0.35);
+  border-top-color: var(--color-bg);
+  border-radius: var(--radius-full);
+  animation: spin 0.7s linear infinite;
+}
+.btn-submit.loading .spinner { display: inline-block; }
+.btn-submit.loading .btn-label { opacity: 0.7; }
+
+/* ---------- SUCESSO ---------- */
+.success {
+  display: none;
+  margin-top: var(--space-md);
+  background: var(--color-success-soft);
+  border: var(--border-thin) solid rgba(34, 197, 94, 0.35);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--fs-base);
+  color: #4ade80;
+  text-align: center;
+  font-weight: var(--fw-medium);
+}
+.success.show { display: block; animation: fadeUp var(--transition-base) ease both; }
+
+.form-error-banner {
+  display: none;
+  margin-top: var(--space-md);
+  background: var(--color-error-soft);
+  border: var(--border-thin) solid rgba(248, 113, 113, 0.35);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--fs-sm);
+  color: var(--color-error);
+  text-align: center;
+}
+.form-error-banner.show { display: block; animation: fadeUp var(--transition-base) ease both; }
+
+/* ---------- ADMIN LINK (rodapé discreto) ---------- */
+.admin-link {
+  font-size: 10.5px;
+  color: var(--color-text-faint);
+  text-decoration: underline;
+}
+.admin-link:hover { color: var(--color-text-muted); }

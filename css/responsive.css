@@ -1,0 +1,51 @@
+/* ============================================================
+   RESPONSIVE.CSS — Ajustes por breakpoint (mobile-first)
+   ------------------------------------------------------------
+   Base do projeto já é mobile-first (ver global.css/form.css).
+   Aqui ficam apenas os AJUSTES para telas maiores e exceções
+   específicas de telas muito pequenas.
+   ============================================================ */
+
+/* ---------- Telas muito pequenas (≤ 380px) ---------- */
+@media (max-width: 380px) {
+  .card { padding: var(--space-lg) var(--space-md) var(--space-xl); }
+  .logo-img { max-width: 240px; }
+  .field-row { grid-template-columns: 1fr; }
+}
+
+/* ---------- Mobile padrão → Tablet (≥ 768px) ---------- */
+@media (min-width: 768px) {
+  .header { padding: var(--space-4xl) var(--space-lg) var(--space-2xl); }
+  .logo-img { max-width: 420px; }
+  .card { padding: 48px 56px 56px; }
+  .card-title { font-size: 30px; }
+}
+
+/* ---------- Desktop (≥ 1024px) ---------- */
+@media (min-width: 1024px) {
+  .card { max-width: 600px; }
+  .pw-box { max-width: 420px; }
+}
+
+/* ---------- Telas grandes / Ultrawide (≥ 1440px) ---------- */
+@media (min-width: 1440px) {
+  body {
+    background-image:
+      radial-gradient(ellipse 60% 60% at 50% -10%, rgba(30, 60, 200, 0.55) 0%, transparent 70%),
+      repeating-linear-gradient(
+        -45deg,
+        transparent 0px,
+        transparent 18px,
+        rgba(255, 255, 255, 0.028) 18px,
+        rgba(255, 255, 255, 0.028) 19px
+      );
+  }
+  .card { max-width: 640px; }
+}
+
+/* ---------- Admin: tabela responsiva ---------- */
+@media (max-width: 768px) {
+  .admin-body { padding: var(--space-lg) var(--space-md); }
+  .admin-head { padding: var(--space-md) var(--space-lg); }
+  .action-bar { flex-direction: column; align-items: stretch; }
+}

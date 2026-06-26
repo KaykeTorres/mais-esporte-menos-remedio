@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ===== SEO ===== -->
+  <title>+Esporte −Remédio · Cadastro Oficial de Participantes</title>
+  <meta name="description" content="Cadastre-se no programa +Esporte −Remédio. Leve mais esporte e menos remédio para sua família e sua comunidade. Cadastro rápido, oficial e gratuito.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://www.maisesportemenosremedio.com.br/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="+Esporte −Remédio · Cadastro Oficial">
+  <meta property="og:description" content="Cadastre-se no programa +Esporte −Remédio e participe das ações oficiais para sua comunidade.">
+  <meta property="og:image" content="img/logo-mascote.png">
+  <meta property="og:locale" content="pt_BR">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/logo-mascote.png">
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Estilos do projeto (apenas imports — ver css/style.css) -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════════════════════
+       CONTEÚDO PRINCIPAL — público, qualquer visitante acessa
+       ════════════════════════════════════════════════════════ -->
+  <div id="mainContent">
+
+    <!-- ───────── HEADER ───────── -->
+    <header class="header">
+      <img src="img/logo-mascote.png" alt="+Esporte −Remédio" class="logo-img">
+      <div class="tagline">
+        <span class="dot-live"></span>
+        CADASTRO OFICIAL
+      </div>
+    </header>
+
+    <!-- ───────── FORMULÁRIO ───────── -->
+    <main>
+      <section class="card reveal" aria-labelledby="formTitle">
+        <h1 class="card-title" id="formTitle">CADASTRE-SE AGORA</h1>
+        <p class="card-sub">Preencha seus dados para participar do programa +Esporte −Remédio. É rápido, gratuito e oficial.</p>
+
+        <form id="leadForm" novalidate>
+
+          <p class="section-label">Dados Pessoais</p>
+          <div class="field-stack">
+
+            <div class="field">
+              <label for="nomeCompleto"><span class="ico">👤</span> Nome Completo</label>
+              <div class="input-wrap">
+                <input type="text" id="nomeCompleto" name="nomeCompleto" placeholder="Digite seu nome completo" required>
+                <span class="check">✓</span>
+              </div>
+              <span class="field-err">Informe nome e sobrenome.</span>
+            </div>
+
+            <div class="field">
+              <label for="whatsapp"><span class="ico">📱</span> WhatsApp</label>
+              <div class="input-wrap">
+                <input type="tel" id="whatsapp" name="whatsapp" placeholder="(11) 99999-9999" inputmode="numeric" maxlength="15" required>
+                <span class="check">✓</span>
+              </div>
+              <span class="field-err">Informe um WhatsApp válido.</span>
+            </div>
+
+            <div class="field">
+              <label for="dataNascimento"><span class="ico">🎂</span> Data de Nascimento</label>
+              <div class="input-wrap">
+                <input type="text" id="dataNascimento" name="dataNascimento" placeholder="DD/MM/AAAA" inputmode="numeric" maxlength="10" required>
+                <span class="check">✓</span>
+              </div>
+              <span class="field-err">Informe uma data válida (DD/MM/AAAA).</span>
+            </div>
+
+          </div>
+
+          <!-- ───────── ENDEREÇO (accordion) ───────── -->
+          <button type="button" class="btn-toggle-address" id="toggleAddressBtn" aria-expanded="false" aria-controls="addressPanel">
+            <span class="toggle-text">Adicionar Endereço</span>
+            <span class="chevron">▾</span>
+          </button>
+
+          <div class="accordion-panel" id="addressPanel">
+            <div class="accordion-inner">
+
+              <div class="field">
+                <label for="logradouro"><span class="ico">📍</span> Logradouro (Rua / Avenida)</label>
+                <div class="input-wrap">
+                  <input type="text" id="logradouro" name="logradouro" placeholder="Ex: Rua das Flores">
+                  <span class="check">✓</span>
+                </div>
+                <span class="field-err">Campo obrigatório.</span>
+              </div>
+
+              <div class="field-row">
+                <div class="field">
+                  <label for="numero">Número</label>
+                  <div class="input-wrap">
+                    <input type="text" id="numero" name="numero" placeholder="Ex: 123">
+                    <span class="check">✓</span>
+                  </div>
+                  <span class="field-err">Campo obrigatório.</span>
+                </div>
+
+                <div class="field">
+                  <label for="complemento">Complemento <span class="opt-tag">(opcional)</span></label>
+                  <div class="input-wrap">
+                    <input type="text" id="complemento" name="complemento" placeholder="Apto, bloco...">
+                  </div>
+                </div>
+              </div>
+
+              <div class="field-row">
+                <div class="field">
+                  <label for="cep">CEP</label>
+                  <div class="input-wrap">
+                    <input type="text" id="cep" name="cep" placeholder="00000-000" inputmode="numeric" maxlength="9">
+                    <span class="check">✓</span>
+                  </div>
+                  <span class="field-err">CEP inválido.</span>
+                </div>
+
+                <div class="field">
+                  <label for="bairro">Bairro</label>
+                  <div class="input-wrap">
+                    <input type="text" id="bairro" name="bairro" placeholder="Ex: Centro">
+                    <span class="check">✓</span>
+                  </div>
+                  <span class="field-err">Campo obrigatório.</span>
+                </div>
+              </div>
+
+              <div class="field-row">
+                <div class="field">
+                  <label for="cidade">Cidade</label>
+                  <div class="input-wrap">
+                    <input type="text" id="cidade" name="cidade" placeholder="Ex: São Paulo">
+                    <span class="check">✓</span>
+                  </div>
+                  <span class="field-err">Campo obrigatório.</span>
+                </div>
+
+                <div class="field">
+                  <label for="estado">Estado</label>
+                  <div class="input-wrap">
+                    <select id="estado" name="estado">
+                      <option value="">Selecione</option>
+                      <option value="AC">Acre</option>
+                      <option value="AL">Alagoas</option>
+                      <option value="AP">Amapá</option>
+                      <option value="AM">Amazonas</option>
+                      <option value="BA">Bahia</option>
+                      <option value="CE">Ceará</option>
+                      <option value="DF">Distrito Federal</option>
+                      <option value="ES">Espírito Santo</option>
+                      <option value="GO">Goiás</option>
+                      <option value="MA">Maranhão</option>
+                      <option value="MT">Mato Grosso</option>
+                      <option value="MS">Mato Grosso do Sul</option>
+                      <option value="MG">Minas Gerais</option>
+                      <option value="PA">Pará</option>
+                      <option value="PB">Paraíba</option>
+                      <option value="PR">Paraná</option>
+                      <option value="PE">Pernambuco</option>
+                      <option value="PI">Piauí</option>
+                      <option value="RJ">Rio de Janeiro</option>
+                      <option value="RN">Rio Grande do Norte</option>
+                      <option value="RS">Rio Grande do Sul</option>
+                      <option value="RO">Rondônia</option>
+                      <option value="RR">Roraima</option>
+                      <option value="SC">Santa Catarina</option>
+                      <option value="SP">São Paulo</option>
+                      <option value="SE">Sergipe</option>
+                      <option value="TO">Tocantins</option>
+                    </select>
+                  </div>
+                  <span class="field-err">Campo obrigatório.</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- ───────── TERMOS / LGPD ───────── -->
+          <div class="terms-box">
+            <input type="checkbox" id="termsCheckbox" name="termsCheckbox" required>
+            <label for="termsCheckbox">
+              Declaro expresso consentimento que Vereador George Hato irá coletar, tratar e compartilhar os dados necessários do presente cadastro, nos termos do Artigo 7º, inciso I, e § 5º da Lei nº 13.709, de 14 de agosto de 2018 (Lei Geral de Proteção de Dados Pessoais - LGPD). Por esta ser a expressão da minha vontade declaro que autorizo e assino a presente autorização.
+            </label>
+          </div>
+          <span class="terms-error" id="termsError">Aceite os termos e condições para continuar.</span>
+
+          <!-- ───────── SUBMIT ───────── -->
+          <button type="submit" class="btn-submit" id="submitBtn">
+            <span class="spinner"></span>
+            <span class="btn-label">CONFIRMAR CADASTRO</span>
+          </button>
+
+          <div class="success" id="successBox" role="status"></div>
+          <div class="form-error-banner" id="errorBanner" role="alert"></div>
+
+        </form>
+      </section>
+    </main>
+
+    <!-- ───────── FOOTER ───────── -->
+    <footer class="footer">
+      <p>© 2026 +Esporte −Remédio · Todos os direitos reservados</p>
+    </footer>
+
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       FAB — ENGRENAGEM DE ACESSO ADMINISTRATIVO
+       ════════════════════════════════════════════════════════ -->
+  <button class="fab" id="adminFab" title="Área administrativa" aria-label="Abrir área administrativa">⚙</button>
+
+  <!-- ════════════════════════════════════════════════════════
+       MODAL DE SENHA — "Área Restrita"
+       ════════════════════════════════════════════════════════ -->
+  <div class="overlay" id="pwOverlay">
+    <div class="pw-box">
+      <h3>🔒 ÁREA RESTRITA</h3>
+      <p>Digite a senha para acessar o painel de leads.</p>
+
+      <form id="pwForm" autocomplete="off">
+        <input
+          type="password"
+          id="pwInput"
+          placeholder="••••••"
+          autocomplete="off"
+          required
+        >
+        <button type="submit" class="btn-pw">ACESSAR</button>
+        <p class="pw-err" id="pwError">Senha incorreta. Tente novamente.</p>
+      </form>
+      <button type="button" class="btn-cancel" id="pwCancelBtn">Cancelar</button>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       PAINEL DE LEADS — visível só depois da senha correta
+       ════════════════════════════════════════════════════════ -->
+  <div class="admin-wrap" id="adminWrap">
+    <div class="admin-panel">
+
+      <div class="admin-head">
+        <h2>📋&nbsp; PAINEL DE LEADS</h2>
+        <button class="btn btn-close" id="adminCloseBtn">✕ &nbsp;Fechar</button>
+      </div>
+
+      <div class="admin-body">
+
+        <div id="sheetsStatus" class="sheets-status"></div>
+
+        <div class="action-bar">
+          <button class="btn btn-xls" id="exportXlsBtn">📥 Exportar Excel (.xlsx)</button>
+          <button class="btn btn-csv" id="exportCsvBtn">📄 Exportar CSV</button>
+          <button class="btn btn-refresh" id="refreshLeadsBtn">🔄 Atualizar</button>
+          <button class="btn btn-del" id="clearAllBtn">🗑 Limpar todos</button>
+        </div>
+
+        <input class="search-bar" type="text" id="searchInput" placeholder="🔍  Buscar por nome ou WhatsApp…">
+
+        <div class="leads-info" id="leadsInfo"></div>
+        <div class="table-wrap" id="tableWrap"></div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════
+       SCRIPTS — ordem importa (dependências entre arquivos)
+       ════════════════════════════════════════════════════════ -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="js/validations.js"></script>
+  <script src="js/google-sheets.js"></script>
+  <script src="js/accordion.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/admin-panel.js"></script>
+
+</body>
+</html>

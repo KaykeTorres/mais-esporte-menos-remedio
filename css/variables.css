@@ -1,0 +1,126 @@
+/* ============================================================
+   VARIABLES.CSS — Design System
+   +Esporte −Remédio · Cadastro Oficial
+   ------------------------------------------------------------
+   TODAS as configurações globais de cor, tipografia, espaçamento,
+   bordas, sombras, breakpoints, z-index e transições vivem aqui.
+   Para mudar a identidade visual do site inteiro, edite só este
+   arquivo. Nenhum outro CSS deve ter cores "hardcoded".
+   ============================================================ */
+
+:root {
+
+  /* ---------- CORES · INSTITUCIONAL ---------- */
+  --color-bg:            #0c1a78;   /* azul navy profundo (fundo geral) */
+  --color-bg-dark:       #081360;   /* azul mais escuro (gradientes/seções) */
+  --color-bg-soft:       #112091;   /* azul um tom mais claro (cards alternados) */
+
+  /* ---------- CORES · GLASSMORPHISM ---------- */
+  --color-card-bg:       rgba(6, 13, 65, 0.72);
+  --color-card-border:   rgba(255, 255, 255, 0.11);
+  --color-glass-blur:    14px;
+
+  /* ---------- CORES · DOURADO PREMIUM ---------- */
+  --color-gold:          #FFD12A;
+  --color-gold-dim:      #c9a300;
+  --color-gold-soft:     rgba(255, 209, 42, 0.15);
+
+  /* ---------- CORES · FEEDBACK ---------- */
+  --color-success:       #22C55E;
+  --color-success-soft:  rgba(34, 197, 94, 0.13);
+  --color-error:         #F87171;
+  --color-error-soft:    rgba(248, 113, 113, 0.13);
+
+  /* ---------- CORES · TEXTO ---------- */
+  --color-text:          #FFFFFF;
+  --color-text-muted:    rgba(255, 255, 255, 0.55);
+  --color-text-faint:    rgba(255, 255, 255, 0.30);
+
+  /* ---------- CORES · INPUTS ---------- */
+  --color-input-bg:        rgba(255, 255, 255, 0.06);
+  --color-input-border:    rgba(255, 255, 255, 0.14);
+  --color-input-focus-bg:  rgba(255, 209, 42, 0.06);
+  --color-input-focus-br:  var(--color-gold);
+
+  /* ---------- TIPOGRAFIA ---------- */
+  --font-display: 'Bebas Neue', sans-serif;   /* títulos / impacto institucional */
+  --font-body:    'Poppins', sans-serif;      /* textos / formulário */
+  --font-mono:    'Courier New', monospace;   /* dados tabulares (admin) */
+
+  --fs-xs:    11px;
+  --fs-sm:    12.5px;
+  --fs-base:  14.5px;
+  --fs-md:    16px;
+  --fs-lg:    21px;
+  --fs-xl:    26px;
+  --fs-2xl:   34px;
+  --fs-3xl:   52px;
+
+  --fw-regular:  400;
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
+
+  --ls-tight:  0.5px;
+  --ls-normal: 1px;
+  --ls-wide:   2px;
+  --ls-wider:  3px;
+  --ls-widest: 4px;
+
+  /* ---------- ESPAÇAMENTOS ---------- */
+  --space-2xs:  4px;
+  --space-xs:   8px;
+  --space-sm:   12px;
+  --space-md:   18px;
+  --space-lg:   24px;
+  --space-xl:   32px;
+  --space-2xl:  40px;
+  --space-3xl:  52px;
+  --space-4xl:  72px;
+
+  /* ---------- BORDAS ---------- */
+  --radius-sm:   8px;
+  --radius-md:   14px;
+  --radius-lg:   18px;
+  --radius-xl:   24px;
+  --radius-full: 50%;
+
+  --border-thin:   1px;
+  --border-base:   1.5px;
+  --border-thick:  2px;
+
+  /* ---------- SOMBRAS ---------- */
+  --shadow-card:      0 8px 32px rgba(0, 0, 0, 0.28);
+  --shadow-gold:      0 4px 24px rgba(255, 209, 42, 0.25);
+  --shadow-gold-lg:   0 6px 30px rgba(255, 209, 42, 0.35);
+  --shadow-soft:      4px 4px 24px rgba(0, 0, 0, 0.35);
+  --shadow-inset:     inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+
+  /* ---------- TRANSIÇÕES ---------- */
+  --transition-fast:   0.15s ease;
+  --transition-base:   0.25s ease;
+  --transition-slow:   0.45s ease;
+  --transition-spring: 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ---------- CONTAINERS ---------- */
+  --container-form:   540px;
+  --container-admin:  960px;
+  --container-modal:  380px;
+
+  /* ---------- BREAKPOINTS (referência — usar em media queries) ---------- */
+  --bp-mobile:  480px;
+  --bp-tablet:  768px;
+  --bp-desktop: 1024px;
+  --bp-wide:    1440px;
+
+  /* ---------- Z-INDEX ---------- */
+  --z-base:      1;
+  --z-fab:       100;
+  --z-overlay:   200;
+  --z-admin:     300;
+  --z-toast:     400;
+
+  /* ---------- ESTADOS DE BOTÃO ---------- */
+  --btn-opacity-hover:   0.92;
+  --btn-scale-active:    0.98;
+}

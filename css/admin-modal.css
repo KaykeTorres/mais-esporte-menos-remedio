@@ -1,0 +1,126 @@
+/* ============================================================
+   ADMIN-MODAL.CSS — Engrenagem (FAB) + Modal de senha
+   ------------------------------------------------------------
+   O formulário é público. Apenas este pequeno botão flutuante
+   dá acesso (após senha) ao painel de leads (ver admin-panel.css).
+   ============================================================ */
+
+/* ---------- FAB (botão flutuante da engrenagem) ---------- */
+.fab {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.09);
+  border: var(--border-thin) solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--fs-lg);
+  color: rgba(255, 255, 255, 0.38);
+  transition: all var(--transition-base);
+  z-index: var(--z-fab);
+}
+.fab:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--color-text);
+}
+
+/* ---------- OVERLAY DE SENHA ---------- */
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.82);
+  z-index: var(--z-overlay);
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lg);
+}
+.overlay.open { display: flex; }
+
+.pw-box {
+  background: var(--color-bg-soft);
+  border: var(--border-thin) solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl) var(--space-xl);
+  width: 100%;
+  max-width: var(--container-modal);
+  text-align: center;
+  animation: fadeUp var(--transition-base) ease both;
+}
+
+.pw-box h3 {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  letter-spacing: var(--ls-wide);
+  color: var(--color-gold);
+  margin-bottom: var(--space-xs);
+}
+
+.pw-box p {
+  font-size: var(--fs-base);
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-lg);
+  line-height: 1.5;
+}
+
+.pw-box input {
+  width: 100%;
+  background: var(--color-input-bg);
+  border: var(--border-base) solid var(--color-input-border);
+  border-radius: var(--radius-md);
+  padding: 13px 16px;
+  font-family: var(--font-body);
+  font-size: var(--fs-md);
+  letter-spacing: var(--ls-widest);
+  color: var(--color-text);
+  outline: none;
+  text-align: center;
+  margin-bottom: var(--space-sm);
+  transition: border-color var(--transition-base);
+}
+.pw-box input:focus { border-color: var(--color-gold); }
+
+.pw-box input.shake {
+  animation: shake 0.4s ease;
+  border-color: var(--color-error);
+}
+
+.btn-pw {
+  width: 100%;
+  background: var(--color-gold);
+  color: var(--color-bg);
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  letter-spacing: var(--ls-wider);
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 13px;
+  cursor: pointer;
+  transition: opacity var(--transition-fast);
+}
+.btn-pw:hover { opacity: var(--btn-opacity-hover); }
+
+.pw-err {
+  font-size: var(--fs-sm);
+  color: var(--color-error);
+  margin-top: var(--space-sm);
+  display: none;
+}
+.pw-err.show { display: block; animation: fadeUp var(--transition-base) ease both; }
+
+.btn-cancel {
+  margin-top: var(--space-sm);
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-size: var(--fs-base);
+  cursor: pointer;
+  text-decoration: underline;
+  font-family: var(--font-body);
+}
+.btn-cancel:hover { color: var(--color-text); }
