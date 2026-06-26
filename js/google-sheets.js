@@ -18,7 +18,7 @@
    ============================================================ */
 
 // 🔗 Cole aqui a URL do seu Apps Script Web App (termina em /exec)
-const SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycby-l8Fmde8k3n1zVD84dBUbO27yaRMNK0_nAIa4b3m4Ybb0-bJnHLXt5B1OjG00X3jV/exec";
+const SHEET_WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzTfFDsq6CqwmdTUTO7pQPf0fMhbPDX9eL0EUcY7WgdA83z-sYxKRppw2xgwuiGVeMR/exec";
 
 const LOCAL_BACKUP_KEY = "maisEsporte_leadsBackup";
 
